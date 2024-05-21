@@ -152,7 +152,7 @@ group by A.cycle_day, A.term_code, A.pidm, A.levl_code, A.styp_code"""
         def func():
             def f(term_desc):
                 accept = "A.apst_code = 'D' and A.apdc_code in (select stvapdc_code from stvapdc where stvapdc_inst_acc_ind is not null)"
-                reject = "(A.apst_code in ('X', 'W')) or (A.apst_code = 'D' and (substr(A.apdc_code,1,1) in ('D','W') or A.apdc_code = 'RJ'))"
+                # reject = "(A.apst_code in ('X', 'W')) or (A.apst_code = 'D' and (substr(A.apdc_code,1,1) in ('D','W') or A.apdc_code = 'RJ'))"
                 sel = join([
                     f"{self.get_cycle_day()} as cycle_day",
                     f"trunc(A.current_date) as cycle_date",
@@ -173,6 +173,7 @@ group by A.cycle_day, A.term_code, A.pidm, A.levl_code, A.styp_code"""
                     f"A.majr_code_1 as majr_code",
                     f"A.dept_code",
                     f"A.hs_percentile as hs_pctl",
+                    # f"A.enrolled_ind",
                 ], ',\n')
 
                 qry = f"select {indent(sel)}\nfrom opeir.admissions_{term_desc} A"
@@ -194,7 +195,7 @@ group by A.cycle_day, A.term_code, A.pidm, A.levl_code, A.styp_code"""
             def get_spraddr(nm):
                 sel = "to_number(substr(B.spraddr_zip, 0, 5) default null on conversion error)" if nm == "zip" else "B.spraddr_"+nm
                 return f"""
-(select B.{nm} from (
+    (select B.{nm} from (
     select
         {sel} as {nm},
         B.spraddr_seqno as s,
@@ -208,7 +209,7 @@ group by A.cycle_day, A.term_code, A.pidm, A.levl_code, A.styp_code"""
             --when B.spraddr_atyp_code = 'P2' then 0
             end as r
     from spraddr B where B.spraddr_pidm = A.pidm and B.spraddr_stat_code in ('{stat_codes}')
-) B where B.{nm} is not null and B.r is not null order by B.r desc, B.s desc fetch first 1 row only) as {nm}""".strip()
+    ) B where B.{nm} is not null and B.r is not null order by B.r desc, B.s desc fetch first 1 row only) as {nm}""".strip()
 
             sel = join([
                 f"A.*",
@@ -263,9 +264,11 @@ group by A.cycle_day, A.term_code, A.pidm, A.levl_code, A.styp_code"""
                 f"(select B.spbpers_sex from spbpers B where B.spbpers_pidm = A.pidm) as gender",
                 *get_desc('lgcy'),
                 *get_desc('resd'),
-                f"A.hs_pctl"
+                f"A.hs_pctl",
+                # f"A.enrolled_ind",
             ], ',\n')
-            qry = f"select {indent(sel)}\nfrom {subqry(qry)} A where A.r = 1 and A.levl_code = 'UG' and A.styp_code in ('N','R','T')"
+            # qry = f"select {indent(sel)}\nfrom {subqry(qry)} A where A.r = 1 and A.levl_code = 'UG' and A.styp_code in ('N','R','T')"
+            qry = f"select {indent(sel)}\nfrom {subqry(qry)} A where A.r = 1"
             self.adm = db.execute(qry, 'adm' in self.show)
         return self.get(func, f"adm/{self.stem}.parq")
 

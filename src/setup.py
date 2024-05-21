@@ -87,6 +87,12 @@ def mkqry(qry):
 def subqry(qry, lev=1):
     return "(" + indent(qry.strip(), lev) + indent(")", lev-1)# if lev>0 else qry
 
+def encrypt(plain):
+    return plain ^ int(os.environ.get('ENCRYPT_KEY'))
+
+def decrypt(crypt):
+    return crypt ^ int(os.environ.get('ENCRYPT_KEY'))
+
 ##################### statistics helpers #####################
 class pctl():
     def __init__(self, p):
