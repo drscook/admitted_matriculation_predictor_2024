@@ -158,7 +158,6 @@ crse_codes = [
     # 'univ0342',
 ]
 
-
 @dataclasses.dataclass
 class AMP(MyBaseClass):
     cycle_day : int = 0
@@ -169,7 +168,7 @@ class AMP(MyBaseClass):
     stats: tuple = (pctl(0), pctl(25), pctl(50), pctl(75), pctl(100), )
     show: set = dataclasses.field(default_factory=set)
     param: dict = dataclasses.field(default_factory=dict)    
-    root_path: str = f"/home/scook/institutional_data_analytics/admitted_matriculation_projection/resources/rslt2"
+    root_path: str = r"C:\\Users\gavin\\Documents\\AMP\\admitted_matriculation_predictor"
     dependence: dict = dataclasses.field(default_factory=lambda: {'adm':'raw', 'flg':'raw', 'raw':'X', 'reg':'X', 'X':'X_proc', 'X_proc':'Y'})
 
     def __post_init__(self):
@@ -515,7 +514,7 @@ if __name__ == "__main__":
         print(df.reset_index().drop(columns='index', errors='ignore').head(max_rows).to_markdown(tablefmt='psql'))
 
     from IPython.utils.io import Tee
-    with contextlib.closing(Tee('/home/scook/institutional_data_analytics/admitted_matriculation_projection/admitted_matriculation_predictor/log.txt', "w", channel="stdout")) as outputstream:
+    with contextlib.closing(Tee(r'C:\\Users\gavin\\Documents\\AMP\\admitted_matriculation_predictor\\log.txt', "w", channel="stdout")) as outputstream:
         run_amp(119)
 
 
