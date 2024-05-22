@@ -333,9 +333,12 @@ class MyBaseClass():
         return self
 
     def get(self, func, fn, pre=[], drop=[], path=None):
-        nm = fn.split('/')[0].split('.')[0]
+        # print(fn)
+        nm = fn.split('\\')[0].split('.')[0]
+        # print(nm)
         overwrite = nm in self.overwrite
         path = (self.root_path if path is None else path) / fn
+        print(path)
         if nm in self:
             if overwrite:
                 del self[nm]

@@ -13,7 +13,7 @@ code_desc = lambda x: [x+'_code', x+'_desc']
 
 crse_codes = [
     '_allcrse',
-    'agec2317',
+    # 'agec2317',
     # 'ansc1119',
     # 'ansc1319',
     # 'anth2302',
@@ -127,14 +127,14 @@ class AMP(MyBaseClass):
     stats: tuple = ('mean',)
     show: set = dataclasses.field(default_factory=set)
     param: dict = dataclasses.field(default_factory=dict)    
-    root_path: str = f"/home/scook/institutional_data_analytics/admitted_matriculation_projection/resources/rslt"
+    root_path: str = f"C:\\Users\\gavin\Documents\\AMP\\admitted_matriculation_predictor"
     dependence: dict = dataclasses.field(default_factory=lambda: {'adm':'raw', 'flg':'raw', 'raw':'X', 'reg':'X', 'X':'X_proc', 'X_proc':'Y'})
     aggregations: tuple = (
         'coll_desc',
         'dept_desc',
         'majr_desc',
         'camp_desc',
-        'stat_desc',
+        # 'stat_desc',
         'cnty_desc',
         'gender',
         *[f'race_{r}' for r in ['american_indian','asian','black','pacific','white','hispanic']],
@@ -470,14 +470,14 @@ param_grds = {
         'seed': seed,
         'metric': 'log_loss',
         'early_stop': True,
-        'time_budget': 2,
+        # 'time_budget': 5,
         # 'time_budget': 120,
-        # 'time_budget': np.arange(10,500,10),
+        'time_budget': np.arange(10,200,10),
         # 'time_budget': [*np.arange(1,20),*np.arange(20,100,10),*np.arange(100,200,25),*np.arange(200,401,50)],
         # 'time_budget': 120,
         # 'estimator_list': [['lgbm','histgb']],#'xgboost']],#'catboost']],#'histgb','extra_tree','xgb_limitdepth','rf']],#'lrl1','lrl2','kneighbor'
         # 'estimator_list': [['xgboost']],#'xgboost']],#'catboost']],#'histgb','extra_tree','xgb_limitdepth','rf']],#'lrl1','lrl2','kneighbor'
-        'estimator_list': [['xgboost']],#'catboost']],#'histgb','extra_tree','xgb_limitdepth','rf']],#'lrl1','lrl2','kneighbor'
+        'estimator_list': [['xgboost'], ['lgbm']],#'catboost']],#'histgb','extra_tree','xgb_limitdepth','rf']],#'lrl1','lrl2','kneighbor'
         # 'estimator_list': [['xgboost']],#'histgb','extra_tree','xgb_limitdepth','rf']],#'lrl1','lrl2','kneighbor'
         # 'ensemble': [False, True],
         'ensemble': False,
@@ -536,6 +536,6 @@ if __name__ == "__main__":
         print(df.reset_index().drop(columns='index', errors='ignore').head(max_rows).to_markdown(tablefmt='psql'))
 
     from IPython.utils.io import Tee
-    with contextlib.closing(Tee('/home/scook/institutional_data_analytics/admitted_matriculation_projection/admitted_matriculation_predictor/log.txt', "w", channel="stdout")) as outputstream:
+    with contextlib.closing(Tee('C:\\Users\\gavin\Documents\\AMP\\admitted_matriculation_predictor\\log.txt', "w", channel="stdout")) as outputstream:
         run_amp(119)
         

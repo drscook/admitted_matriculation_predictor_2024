@@ -16,6 +16,7 @@ def pcks_install():
         'miceforest',
         'flaml',
         'scikit-learn==1.4.1.post1',
+        'tabulate',
         # 'hashlib'
     ]
 
