@@ -127,7 +127,7 @@ class AMP(MyBaseClass):
     stats: tuple = ('mean',)
     show: set = dataclasses.field(default_factory=set)
     param: dict = dataclasses.field(default_factory=dict)    
-    root_path: str = f"C:\\Users\\gavin\Documents\\AMP\\admitted_matriculation_predictor"
+    root_path: str = f"C:\\Users\\gavin\\Documents\\admitted_matriculation_predictor"
     dependence: dict = dataclasses.field(default_factory=lambda: {'adm':'raw', 'flg':'raw', 'raw':'X', 'reg':'X', 'X':'X_proc', 'X_proc':'Y'})
     aggregations: tuple = (
         'coll_desc',
@@ -472,16 +472,17 @@ param_grds = {
         'early_stop': True,
         # 'time_budget': 5,
         # 'time_budget': 120,
-        'time_budget': np.arange(10,200,10),
+        # 'time_budget': np.arange(100,200,10),
         # 'time_budget': [*np.arange(1,20),*np.arange(20,100,10),*np.arange(100,200,25),*np.arange(200,401,50)],
-        # 'time_budget': 120,
+        'time_budget': 150,
         # 'estimator_list': [['lgbm','histgb']],#'xgboost']],#'catboost']],#'histgb','extra_tree','xgb_limitdepth','rf']],#'lrl1','lrl2','kneighbor'
         # 'estimator_list': [['xgboost']],#'xgboost']],#'catboost']],#'histgb','extra_tree','xgb_limitdepth','rf']],#'lrl1','lrl2','kneighbor'
-        'estimator_list': [['xgboost'], ['lgbm']],#'catboost']],#'histgb','extra_tree','xgb_limitdepth','rf']],#'lrl1','lrl2','kneighbor'
+        'estimator_list': [['xgboost']],#'catboost']],#'histgb','extra_tree','xgb_limitdepth','rf']],#'lrl1','lrl2','kneighbor'
         # 'estimator_list': [['xgboost']],#'histgb','extra_tree','xgb_limitdepth','rf']],#'lrl1','lrl2','kneighbor'
         # 'ensemble': [False, True],
         'ensemble': False,
         # 'ensemble': True,
+        # 'gpu_per_trial': 1,
     },
 }
 
@@ -501,8 +502,8 @@ def run_amp(cycle_day, styp_codes=['n'], overwrite=[]):
         self = AMP(**kwargs)
         self.get_result()
         self.get_Y()
-        if self.proj_code in self.clf:
-            print(self.param['clf'][0], 'time_budget', self.param['clf'][2]['time_budget'], self.clf[self.proj_code].estimator)
+        # if self.proj_code in self.clf:
+        #     print(self.param['clf'][0], 'time_budget', self.param['clf'][2]['time_budget'], self.clf[self.proj_code].estimator)
         if self.crse_code == '_allcrse':
             for variable in self.aggregations:
                 self.get_result(variable)
@@ -536,6 +537,6 @@ if __name__ == "__main__":
         print(df.reset_index().drop(columns='index', errors='ignore').head(max_rows).to_markdown(tablefmt='psql'))
 
     from IPython.utils.io import Tee
-    with contextlib.closing(Tee('C:\\Users\\gavin\Documents\\AMP\\admitted_matriculation_predictor\\log.txt', "w", channel="stdout")) as outputstream:
-        run_amp(119)
+    with contextlib.closing(Tee('C:\\Users\\gavin\Documents\\admitted_matriculation_predictor\\log.txt', "w", channel="stdout")) as outputstream:
+        run_amp(112)
         

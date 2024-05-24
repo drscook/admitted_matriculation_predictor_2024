@@ -18,6 +18,7 @@ def pcks_install():
         'scikit-learn==1.4.1.post1',
         'tabulate',
         # 'hashlib'
+        'xgboost',
     ]
 
     for package in packages:
