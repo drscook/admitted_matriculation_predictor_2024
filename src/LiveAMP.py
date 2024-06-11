@@ -23,7 +23,7 @@ crse_codes = [
     # 'arts3331',
     # 'biol1305',
     # 'biol1406',
-    'biol1407',
+    # 'biol1407',
     # 'biol2401',
     # 'biol2402',
     # 'busi1301',
