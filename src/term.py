@@ -52,7 +52,6 @@ where A.stvterm_code = B.sobptrm_term_code and B.sobptrm_ptrm_code='1'"""
         super().__post_init__()
         self.get_trm()
         self.get_dst()
-        self.root_path /= 'data'
         self.year = self.term_code // 100
         self.appl_term_codes = [self.term_code, self.term_code-2] if self.term_code % 100 == 8 else [self.term_code]
         T = [self.trm.query("term_code==@t").squeeze() for t in self.appl_term_codes]
@@ -145,14 +144,13 @@ select
 from A
 group by A.cycle_day, A.term_code, A.pidm, A.levl_code, A.styp_code"""
             self.reg = db.execute(qry, 'reg' in self.show)
-        return self.get(func, f"reg/{self.stem}.parq")
+        return self.get(func, fn=f"reg/{self.stem}.parq", subpath='data')
 
 
     def get_adm(self):
         def func():
             def f(term_desc):
                 accept = "A.apst_code = 'D' and A.apdc_code in (select stvapdc_code from stvapdc where stvapdc_inst_acc_ind is not null)"
-                # reject = "(A.apst_code in ('X', 'W')) or (A.apst_code = 'D' and (substr(A.apdc_code,1,1) in ('D','W') or A.apdc_code = 'RJ'))"
                 sel = join([
                     f"{self.get_cycle_day()} as cycle_day",
                     f"trunc(A.current_date) as cycle_date",
@@ -270,7 +268,7 @@ group by A.cycle_day, A.term_code, A.pidm, A.levl_code, A.styp_code"""
             # qry = f"select {indent(sel)}\nfrom {subqry(qry)} A where A.r = 1 and A.levl_code = 'UG' and A.styp_code in ('N','R','T')"
             qry = f"select {indent(sel)}\nfrom {subqry(qry)} A where A.r = 1"
             self.adm = db.execute(qry, 'adm' in self.show)
-        return self.get(func, f"adm/{self.stem}.parq")
+        return self.get(func, fn=f"adm/{self.stem}.parq", subpath='data')
 
 
     def get_flg(self):
@@ -318,7 +316,7 @@ group by A.cycle_day, A.term_code, A.pidm, A.levl_code, A.styp_code"""
             for k in ['reading', 'writing', 'math']:
                 df[k] = ~df[k].isin(['not college ready', 'retest required', pd.NA])
             self.flg = df.drop(columns=self.flg_col['temp']+['cycle_day'], errors='ignore').dropna(axis=1, how='all')
-        return self.get(func, f"flg/{self.stem}.parq")
+        return self.get(func, fn=f"flg/{self.stem}.parq", subpath='data')
 
 
     def get_raw(self):
@@ -331,4 +329,4 @@ group by A.cycle_day, A.term_code, A.pidm, A.levl_code, A.styp_code"""
             )
             assert (df.groupby(['pidm','term_code']).size() == 1).all()
             self.raw = df
-        return self.get(func, f"raw/{self.stem}.parq", pre=["dst","adm","flg"])
+        return self.get(func, fn=f"raw/{self.stem}.parq", subpath='data', pre=["dst","adm","flg"])
