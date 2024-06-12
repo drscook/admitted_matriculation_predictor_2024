@@ -1,0 +1,143 @@
+2024-06-10 00:27:28.507043
+creating terms.pkl: 
+creating reg/098/202108.parq: Elapsed time: 2.0369 seconds
+creating adm/098/202108.parq: Elapsed time: 25.1790 seconds
+creating flg/098/202108.parq: 202108 flags cycle day 98 >= 98 on 2021-06-02 00:00:00
+202106 flags cycle day 98 >= 98 on 2021-06-02 00:00:00
+Elapsed time: 1.0773 seconds
+creating raw/098/202108.parq: Elapsed time: 0.4205 seconds
+creating reg/098/202208.parq: Elapsed time: 1.9051 seconds
+creating adm/098/202208.parq: Elapsed time: 30.9390 seconds
+creating flg/098/202208.parq: 202208 flags cycle day 98 >= 98 on 2022-06-01 00:00:00
+202206 flags cycle day 98 >= 98 on 2022-06-01 00:00:00
+Elapsed time: 1.1858 seconds
+creating raw/098/202208.parq: Elapsed time: 0.4612 seconds
+creating reg/098/202308.parq: Elapsed time: 1.8667 seconds
+creating adm/098/202308.parq: Elapsed time: 29.1031 seconds
+creating flg/098/202308.parq: 202308 flags cycle day 98 >= 98 on 2023-06-07 00:00:00
+202306 flags cycle day 98 >= 98 on 2023-06-07 00:00:00
+Elapsed time: 1.3363 seconds
+creating raw/098/202308.parq: Elapsed time: 0.4720 seconds
+creating reg/098/202408.parq: Elapsed time: 2.9726 seconds
+creating adm/098/202408.parq: Elapsed time: 17.0410 seconds
+creating flg/098/202408.parq: 202408 flags cycle day 98 >= 98 on 2024-06-05 00:00:00
+202406 flags cycle day 98 >= 98 on 2024-06-05 00:00:00
+Elapsed time: 1.0782 seconds
+creating raw/098/202408.parq: Elapsed time: 0.5768 seconds
+creating reg/000/202108.parq: Elapsed time: 3.9748 seconds
+creating adm/000/202108.parq: Elapsed time: 22.7433 seconds
+creating flg/000/202108.parq: 202108 flags cycle day 0 >= 0 on 2021-09-08 00:00:00
+202106 flags cycle day 15 >= 0 on 2021-08-24 00:00:00
+Elapsed time: 1.1602 seconds
+creating raw/000/202108.parq: Elapsed time: 0.4980 seconds
+creating reg/000/202208.parq: Elapsed time: 2.3422 seconds
+creating adm/000/202208.parq: Elapsed time: 22.8893 seconds
+creating flg/000/202208.parq: 202208 flags cycle day 0 >= 0 on 2022-09-07 00:00:00
+202206 flags cycle day 0 >= 0 on 2022-09-07 00:00:00
+Elapsed time: 1.3080 seconds
+creating raw/000/202208.parq: Elapsed time: 0.5366 seconds
+creating reg/000/202308.parq: Elapsed time: 4.5645 seconds
+creating adm/000/202308.parq: Elapsed time: 18.8466 seconds
+creating flg/000/202308.parq: 202308 flags cycle day 0 >= 0 on 2023-09-13 00:00:00
+202306 flags cycle day 0 >= 0 on 2023-09-13 00:00:00
+Elapsed time: 1.3864 seconds
+creating raw/000/202308.parq: Elapsed time: 0.5113 seconds
+creating reg/000/202408.parq: Elapsed time: 4.3806 seconds
+creating adm/000/202408.parq: Elapsed time: 10.8012 seconds
+creating flg/000/202408.parq: 202408 flags cycle day 98 >= 0 on 2024-06-05 00:00:00
+202406 flags cycle day 98 >= 0 on 2024-06-05 00:00:00
+Elapsed time: 1.2650 seconds
+creating raw/000/202408.parq: Elapsed time: 0.0215 seconds
+Elapsed time: 232.5876 seconds
+creating X.pkl: Elapsed time: 29.6829 seconds
+creating X_proc/n/2d76/77d7.pkl: Elapsed time: 182.5638 seconds
+2024-06-10 00:38:58.761482
+creating y_pred/n/_anycrse/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 486.3769 seconds
+creating y_pred/n/agec2317/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.9572 seconds
+creating y_pred/n/ansc1119/2d76/77d7/fb12.pkl: 202108:fail, 202208:fail, 202308:done, 202408:done, Elapsed time: 242.0488 seconds
+creating y_pred/n/ansc1319/2d76/77d7/fb12.pkl: 202108:fail, 202208:fail, 202308:done, 202408:done, Elapsed time: 242.2425 seconds
+creating y_pred/n/anth2302/2d76/77d7/fb12.pkl: 202108:fail, 202208:fail, 202308:fail, 202408:fail, Elapsed time: 0.8862 seconds
+creating y_pred/n/arts1301/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 486.1205 seconds
+creating y_pred/n/arts1303/2d76/77d7/fb12.pkl: 202108:fail, 202208:done, 202308:done, 202408:done, Elapsed time: 363.6323 seconds
+creating y_pred/n/biol1305/2d76/77d7/fb12.pkl: 202108:fail, 202208:fail, 202308:fail, 202408:fail, Elapsed time: 0.9904 seconds
+creating y_pred/n/biol1406/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 486.0536 seconds
+creating y_pred/n/biol1407/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.2086 seconds
+creating y_pred/n/biol2401/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.7208 seconds
+creating y_pred/n/biol2402/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.6519 seconds
+creating y_pred/n/busi1301/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.1974 seconds
+creating y_pred/n/busi1307/2d76/77d7/fb12.pkl: 202108:fail, 202208:fail, 202308:done, 202408:done, Elapsed time: 242.5382 seconds
+creating y_pred/n/chem1111/2d76/77d7/fb12.pkl: 202108:fail, 202208:done, 202308:done, 202408:done, Elapsed time: 363.5537 seconds
+creating y_pred/n/chem1112/2d76/77d7/fb12.pkl: 202108:fail, 202208:fail, 202308:fail, 202408:fail, Elapsed time: 0.9147 seconds
+creating y_pred/n/chem1302/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.4817 seconds
+creating y_pred/n/chem1311/2d76/77d7/fb12.pkl: 202108:fail, 202208:done, 202308:done, 202408:done, Elapsed time: 363.8565 seconds
+creating y_pred/n/chem1312/2d76/77d7/fb12.pkl: 202108:fail, 202208:fail, 202308:fail, 202408:fail, Elapsed time: 0.8566 seconds
+creating y_pred/n/chem1407/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 487.1620 seconds
+creating y_pred/n/chem1411/2d76/77d7/fb12.pkl: 202108:done, 202208:fail, 202308:fail, 202408:done, Elapsed time: 242.0171 seconds
+creating y_pred/n/chem1412/2d76/77d7/fb12.pkl: 202108:fail, 202208:fail, 202308:fail, 202408:fail, Elapsed time: 0.8021 seconds
+creating y_pred/n/comm1311/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.7471 seconds
+creating y_pred/n/comm1315/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.7865 seconds
+creating y_pred/n/comm2302/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 486.0286 seconds
+creating y_pred/n/crij1301/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.4625 seconds
+creating y_pred/n/dram1310/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.5931 seconds
+creating y_pred/n/dram2361/2d76/77d7/fb12.pkl: 202108:done, 202208:fail, 202308:done, 202408:done, Elapsed time: 363.7484 seconds
+creating y_pred/n/easc2310/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.6610 seconds
+creating y_pred/n/econ1301/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.2226 seconds
+creating y_pred/n/econ2301/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.3403 seconds
+creating y_pred/n/engl1301/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 487.1846 seconds
+creating y_pred/n/engl1302/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.6532 seconds
+creating y_pred/n/engl2307/2d76/77d7/fb12.pkl: 202108:fail, 202208:fail, 202308:fail, 202408:fail, Elapsed time: 0.8621 seconds
+creating y_pred/n/engl2320/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.3130 seconds
+creating y_pred/n/engl2340/2d76/77d7/fb12.pkl: 202108:fail, 202208:done, 202308:fail, 202408:done, Elapsed time: 242.1289 seconds
+creating y_pred/n/engl2350/2d76/77d7/fb12.pkl: 202108:fail, 202208:fail, 202308:fail, 202408:fail, Elapsed time: 0.8514 seconds
+creating y_pred/n/engl2360/2d76/77d7/fb12.pkl: 202108:fail, 202208:fail, 202308:done, 202408:done, Elapsed time: 248.5757 seconds
+creating y_pred/n/engl2364/2d76/77d7/fb12.pkl: 202108:fail, 202208:fail, 202308:fail, 202408:fail, Elapsed time: 0.8112 seconds
+creating y_pred/n/engl2366/2d76/77d7/fb12.pkl: 202108:fail, 202208:fail, 202308:fail, 202408:fail, Elapsed time: 0.8018 seconds
+creating y_pred/n/engl2368/2d76/77d7/fb12.pkl: 202108:fail, 202208:fail, 202308:done, 202408:done, Elapsed time: 242.1154 seconds
+creating y_pred/n/envs1302/2d76/77d7/fb12.pkl: 202108:fail, 202208:done, 202308:fail, 202408:done, Elapsed time: 242.0904 seconds
+creating y_pred/n/fina1360/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:fail, 202408:done, Elapsed time: 364.9044 seconds
+creating y_pred/n/geog1303/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.7071 seconds
+creating y_pred/n/geog1320/2d76/77d7/fb12.pkl: 202108:fail, 202208:fail, 202308:fail, 202408:fail, Elapsed time: 0.9394 seconds
+creating y_pred/n/geog1451/2d76/77d7/fb12.pkl: 202108:fail, 202208:done, 202308:fail, 202408:done, Elapsed time: 242.3201 seconds
+creating y_pred/n/geog2301/2d76/77d7/fb12.pkl: 202108:fail, 202208:fail, 202308:fail, 202408:fail, Elapsed time: 0.9403 seconds
+creating y_pred/n/geol1403/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.6624 seconds
+creating y_pred/n/geol1404/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 483.7164 seconds
+creating y_pred/n/geol1407/2d76/77d7/fb12.pkl: 202108:fail, 202208:done, 202308:done, 202408:done, Elapsed time: 363.6342 seconds
+creating y_pred/n/geol1408/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.6100 seconds
+creating y_pred/n/govt2305/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.3694 seconds
+creating y_pred/n/govt2306/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.7091 seconds
+creating y_pred/n/hist1301/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.0840 seconds
+creating y_pred/n/hist1302/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.4776 seconds
+creating y_pred/n/hist2321/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.5987 seconds
+creating y_pred/n/hist2322/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:fail, 202408:done, Elapsed time: 363.1338 seconds
+creating y_pred/n/huma1315/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.6657 seconds
+creating y_pred/n/kine2315/2d76/77d7/fb12.pkl: 202108:done, 202208:fail, 202308:fail, 202408:done, Elapsed time: 242.0503 seconds
+creating y_pred/n/math1314/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.6273 seconds
+creating y_pred/n/math1316/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.4466 seconds
+creating y_pred/n/math1324/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.5175 seconds
+creating y_pred/n/math1332/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.4579 seconds
+creating y_pred/n/math1342/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.7576 seconds
+creating y_pred/n/math2412/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.4533 seconds
+creating y_pred/n/math2413/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.7456 seconds
+creating y_pred/n/musi1310/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.9985 seconds
+creating y_pred/n/musi1311/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.9103 seconds
+creating y_pred/n/musi3325/2d76/77d7/fb12.pkl: 202108:fail, 202208:fail, 202308:fail, 202408:fail, Elapsed time: 0.9032 seconds
+creating y_pred/n/phil1301/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.9445 seconds
+creating y_pred/n/phil1304/2d76/77d7/fb12.pkl: 202108:fail, 202208:fail, 202308:fail, 202408:fail, Elapsed time: 0.9141 seconds
+creating y_pred/n/phil2303/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 486.0130 seconds
+creating y_pred/n/phil3301/2d76/77d7/fb12.pkl: 202108:fail, 202208:fail, 202308:fail, 202408:fail, Elapsed time: 0.8573 seconds
+creating y_pred/n/phys1302/2d76/77d7/fb12.pkl: 202108:fail, 202208:fail, 202308:fail, 202408:fail, Elapsed time: 0.8037 seconds
+creating y_pred/n/phys1401/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:fail, 202408:done, Elapsed time: 362.8930 seconds
+creating y_pred/n/phys1402/2d76/77d7/fb12.pkl: 202108:fail, 202208:fail, 202308:fail, 202408:fail, Elapsed time: 0.7933 seconds
+creating y_pred/n/phys2425/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.7389 seconds
+creating y_pred/n/phys2426/2d76/77d7/fb12.pkl: 202108:fail, 202208:fail, 202308:fail, 202408:fail, Elapsed time: 0.8400 seconds
+creating y_pred/n/psyc2301/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.0828 seconds
+creating y_pred/n/soci1301/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.4966 seconds
+creating y_pred/n/soci1306/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 484.9213 seconds
+creating y_pred/n/soci2303/2d76/77d7/fb12.pkl: 202108:fail, 202208:done, 202308:fail, 202408:done, Elapsed time: 242.4171 seconds
+creating y_pred/n/univ0200/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.7234 seconds
+creating y_pred/n/univ0204/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.1807 seconds
+creating y_pred/n/univ0301/2d76/77d7/fb12.pkl: 202108:done, 202208:done, 202308:done, 202408:done, Elapsed time: 485.5804 seconds
+creating y_pred/n/univ0314/2d76/77d7/fb12.pkl: 202108:fail, 202208:done, 202308:done, 202408:done, Elapsed time: 363.5742 seconds
+creating y_pred/n/univ0324/2d76/77d7/fb12.pkl: 202108:fail, 202208:done, 202308:done, 202408:done, Elapsed time: 363.5690 seconds
+creating y_pred/n/univ0332/2d76/77d7/fb12.pkl: 202108:fail, 202208:fail, 202308:fail, 202408:fail, Elapsed time: 0.8521 seconds
+creating y_pred/n/univ0342/2d76/77d7/fb12.pkl: 202108:fail, 202208:done, 202308:done, 202408:done, Elapsed time: 363.9649 seconds
