@@ -157,8 +157,6 @@ select
 from A
 group by A.term_code, A.pidm, A.levl_code, A.styp_code
 """
-
-# group by A.cycle_day, A.term_code, A.pidm, A.levl_code, A.styp_code"""
             self.reg = db.execute(qry, 'reg' in self.show)
         return self.get(func, fn=f"reg/{self.stem}.parq", subpath='data')
 
@@ -177,8 +175,6 @@ group by A.term_code, A.pidm, A.levl_code, A.styp_code
                     f"A.levl_code",
                     f"A.styp_code",
                     f"A.appl_no",
-                    # f"min(trunc(A.current_date)) over (partition by A.pidm, A.appl_no) as appl_date",  # first date on snapshot table (saradap_appl_date has too many consistencies so this replaces it)
-                    # f"min(case when A.apst_code = 'D' and A.apdc_code in (select stvapdc_code from stvapdc where stvapdc_inst_acc_ind is not null) then trunc(A.current_date) end) over (partition by A.pidm, A.appl_no) as apdc_date",  # first date accepted
                     f"max({self.get_cycle_day()}) over (partition by A.pidm, A.appl_no) as appl_day",  # first date on snapshot table (saradap_appl_date has too many consistencies so this replaces it)
                     f"max(case when A.apst_code = 'D' and A.apdc_code in (select stvapdc_code from stvapdc where stvapdc_inst_acc_ind is not null) then {self.get_cycle_day()} end) over (partition by A.pidm, A.appl_no) as apdc_day",  # first date accepted
                     f"A.admt_code",
@@ -191,27 +187,6 @@ group by A.term_code, A.pidm, A.levl_code, A.styp_code
                     f"A.dept_code",
                     f"A.hs_percentile as hs_pctl",
                     # f"A.enrolled_ind",
-
-                    # f"{self.get_cycle_day()} as cycle_day",
-                    # f"trunc(A.current_date) as cycle_date",
-                    # f"min(trunc(A.current_date)) over (partition by A.pidm, A.appl_no) as appl_date",  # first date on snapshot table (saradap_appl_date has too many consistencies so this replaces it)
-                    # f"min(case when {accept} then trunc(A.current_date) end) over (partition by A.pidm, A.appl_no) as apdc_date",  # first date accepted
-                    # f"A.pidm",
-                    # f"A.id",
-                    # f"A.term_code as term_code_entry",
-                    # f"A.levl_code",
-                    # f"A.styp_code",
-                    # f"A.admt_code",
-                    # f"A.appl_no",
-                    # f"A.apst_code",
-                    # f"A.apdc_code",
-                    # f"A.camp_code",
-                    # f"A.saradap_resd_code as resd_code",
-                    # f"A.coll_code_1 as coll_code",
-                    # f"A.majr_code_1 as majr_code",
-                    # f"A.dept_code",
-                    # f"A.hs_percentile as hs_pctl",
-                    # f"A.enrolled_ind",
                 ]
                 qry = f"select {g(sel)}from opeir.admissions_{term_desc} A"
                 sel = [
@@ -221,17 +196,6 @@ group by A.term_code, A.pidm, A.levl_code, A.styp_code
                 ]
                 qry = f"select {g(sel)}from {subqry(qry)} A where A.apdc_day >= A.cycle_day and {self.cycle_day} + 7 >= A.cycle_day and A.cycle_day >= 0"
                 qry = f"select A.* from {subqry(qry)} A where A.cycle_day = A.before and A.lag <= 7"
-
-                # sel = join([
-                #     f"A.*",
-                #     # f"case\n{tab}when max(case when A.cycle_day >= {self.cycle_day} then A.cycle_date end) over (partition by A.pidm, A.appl_no) = A.cycle_date then 1\n{tab}end as r1",  # finds most recent daily snapshot BEFORE cycle_day
-                #     f"case\n{tab}when min(case when A.cycle_day >= {self.cycle_day} then A.cycle_day end) over (partition by A.pidm, A.appl_no) = A.cycle_day then 1\n{tab}end as r1",  # finds most recent daily snapshot BEFORE cycle_day
-                #     f"case\n{tab}when sum(case when A.cycle_day <  {self.cycle_day} then 1 else 0 end) over (partition by A.pidm, A.appl_no) >= least({self.cycle_day}, trunc(sysdate)-{dt(self.cycle_date)}) / 2 then 1\n{tab}end as r2",  # check if appears on >= 50% of daily snapshots AFTER cycle_day
-                #     # f"case\n{tab}when sum(case when A.cycle_day <  {self.cycle_day} then 1 else 0 end) over (partition by A.pidm, A.appl_no) >= {self.cycle_day}/2 then 1\n{tab}when sysdate - {dt(self.cycle_date)} < 5 then 1\n{tab}end as r2",  # check if appears on >= 50% of daily snapshots AFTER cycle_day
-                # ], ',\n')
-
-                # qry = f"select {indent(sel)}\nfrom {subqry(qry)} A where cycle_day between 0 and {self.cycle_day} + 14 and {accept}"
-                # qry = f"select A.* from {subqry(qry)} A where A.r1 = 1 and A.r2 = 1"
                 return qry
             qry = join([f(term_desc).strip() for term_desc in self.appl_term_descs], "\n\nunion all\n\n")
             
@@ -289,7 +253,6 @@ group by A.term_code, A.pidm, A.levl_code, A.styp_code
                 *get_desc('apst'),
                 *get_desc('apdc'),
                 *get_desc('camp'),
-                # f"case when A.camp_code = 'S' then 1 end as camp_main",
                 *get_desc('coll'),
                 *get_desc('dept'),
                 *get_desc('majr'),
@@ -311,7 +274,6 @@ group by A.term_code, A.pidm, A.levl_code, A.styp_code
                 f"A.hs_pctl",
                 # f"A.enrolled_ind",
             ]
-            # qry = f"select {indent(sel)}\nfrom {subqry(qry)} A where A.r = 1 and A.levl_code = 'UG' and A.styp_code in ('N','R','T')"
             qry = f"select {g(sel)}from {subqry(qry)} A where A.r = 1"
             self.adm = db.execute(qry, 'adm' in self.show)
         return self.get(func, fn=f"adm/{self.stem}.parq", subpath='data')

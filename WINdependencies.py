@@ -7,18 +7,18 @@ def pcks_install():
         'dill',
         'python-dotenv', 
         'oracledb',
-        'numpy',
-        'scipy',
-        'pandas',
+        'numpy==1.26.4',
+        'pandas==2.2.1',
         'matplotlib',
         'ipython', 
         'codetiming',
-        'miceforest',
-        'flaml',
+        'miceforest==5.7.0',
+        'flaml==2.1.2',
         'scikit-learn==1.4.1.post1',
         'tabulate',
         # 'hashlib'
         'xgboost',
+        'openpyxl',
     ]
 
     for package in packages:

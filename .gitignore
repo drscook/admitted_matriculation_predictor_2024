@@ -1,2 +1,6 @@
 
 *.pyc
+log.txt
+11*/*
+0**/*
+src/__pycache__/*
