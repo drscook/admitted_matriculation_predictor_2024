@@ -5,6 +5,7 @@ from sklearn.preprocessing import StandardScaler, PowerTransformer
 from sklearn.compose import ColumnTransformer
 from sklearn.metrics import accuracy_score, log_loss
 from sklearn import set_config
+import xgboost
 set_config(transform_output="pandas")
 code_desc = lambda x: [x+'_code', x+'_desc']
 
@@ -123,7 +124,7 @@ class AMP(MyBaseClass):
     stats: tuple = (pctl(0), pctl(25), pctl(50), pctl(75), pctl(100))
     show: set = dataclasses.field(default_factory=set)
     param: dict = dataclasses.field(default_factory=dict)    
-    root_path: str = f"C:\\Users\\Gavin\\Documents\\admitted_matriculation_predictor"
+    root_path: str = f"/scratch/user/u.gm197559"
     dependence: dict = dataclasses.field(default_factory=lambda: {'adm':'raw', 'flg':'raw', 'raw':'X', 'reg':'X', 'X':'X_proc', 'X_proc':'Y'})
     aggregations: tuple = (
         'crse_code',
@@ -329,14 +330,19 @@ class AMP(MyBaseClass):
                     y_model = X_model.pop('actual')
                     mask = X_model.pop('mask')
                     dct = self.param['clf'][2] | {
-                        'X_train':X_model[mask],
-                        'y_train':y_model[mask],
-                        'X_val':X_model[~mask],
-                        'y_val':y_model[~mask],
-                        'task':'classification',
+                        # 'X_train':X_model[mask],
+                        # 'y_train':y_model[mask],
+                        'X':X_model[mask],
+                        'y':y_model[mask],
+                        # 'X_val':X_model[~mask],
+                        # 'y_val':y_model[~mask],
+                        'eval_set': (X_model[~mask], y_model[~mask]),
+                        # 'task':'classification',
                         'verbose':0,
+                        'enable_categorical': True,
                     }
-                    clf = fl.AutoML(**dct)
+                    # clf = fl.AutoML(**dct)
+                    clf = xgboost.XGBClassifier(**dct)
                     with warnings.catch_warnings(action='ignore'):
                         clf.fit(**dct)
                     pred = clf.predict(Z.drop(columns=['actual','mask']))
@@ -445,27 +451,34 @@ param_grds = {
         # 'tune': [False, True],
     },
     'clf': {
-        'seed': seed,
-        'metric': 'log_loss',
-        'early_stop': False,
-        # 'time_budget': 5,
+        # 'tree_method': 'hist',
+        # 'device': 'cuda',
+        
+        # 'seed': seed,
+        # 'metric': 'log_loss',
+        # 'early_stop': False,
+        # 'time_budget': 2,
         # 'time_budget': 120,
-        'max_iter': 75,
+        # 'max_iter': 75,
         # 'estimator_list': [['xgboost']],
-        # 'ensemble': False,
+        # 'ensemble': False, 
+        # 'custom_hp': {
+        #             "xgboost": {
+        #                 'tree_method': {
+        #                     'domain': 'hist'
+        #                 },
+        #                 'device': {
+        #                     'domain': 'cuda'
+        #                 },
+        #             }
+        #         },
+        # 'n_jobs': -1,
+        # 'use_ray': True,
+        # 'n_concurrent_trials': 8,
         # 'ensemble': [False, True],
-        'custom_hp': {
-                    "xgboost": {
-                        'tree_method': {
-                            'domain': 'hist'
-                        },
-                        'device': {
-                            'domain': 'cuda'
-                        },
-                    }
-                },
     },
 }
+
 
 formatter = lambda x: str(x).replace('\n','').replace(' ','')
 hasher = lambda x, d=2: hashlib.shake_128(formatter(x).encode()).hexdigest(d)

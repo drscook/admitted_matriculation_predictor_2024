@@ -123,7 +123,7 @@ class AMP(MyBaseClass):
     stats: tuple = (pctl(0), pctl(25), pctl(50), pctl(75), pctl(100))
     show: set = dataclasses.field(default_factory=set)
     param: dict = dataclasses.field(default_factory=dict)    
-    root_path: str = f"C:\\Users\\Gavin\\Documents\\admitted_matriculation_predictor"
+    root_path: str = f"/scratch/user/u.gm197559"
     dependence: dict = dataclasses.field(default_factory=lambda: {'adm':'raw', 'flg':'raw', 'raw':'X', 'reg':'X', 'X':'X_proc', 'X_proc':'Y'})
     aggregations: tuple = (
         'crse_code',
@@ -447,13 +447,13 @@ param_grds = {
     'clf': {
         'seed': seed,
         'metric': 'log_loss',
-        'early_stop': False,
-        # 'time_budget': 5,
+        # 'early_stop': False,
+        # 'time_budget': 2,
         # 'time_budget': 120,
         'max_iter': 75,
+        'hpo_method': 'bs',
         # 'estimator_list': [['xgboost']],
-        # 'ensemble': False,
-        # 'ensemble': [False, True],
+        'ensemble': False, 
         'custom_hp': {
                     "xgboost": {
                         'tree_method': {
@@ -464,8 +464,13 @@ param_grds = {
                         },
                     }
                 },
+        # 'n_jobs': -1,
+        # 'use_ray': True,
+        # 'n_concurrent_trials': 8,
+        # 'ensemble': [False, True],
     },
 }
+
 
 formatter = lambda x: str(x).replace('\n','').replace(' ','')
 hasher = lambda x, d=2: hashlib.shake_128(formatter(x).encode()).hexdigest(d)
